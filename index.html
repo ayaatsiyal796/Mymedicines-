@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>CarePlus Pharmacy | Your Health Companion</title>
+    <!-- Google Fonts & Font Awesome for icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="header">
+    <div class="nav-container">
+        <div class="logo">
+            <h2>Care<span>Plus</span> <i class="fas fa-capsules"></i></h2>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#" data-page="home" class="nav-link active-link"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="#" data-page="medicines" class="nav-link"><i class="fas fa-tablets"></i> Medicines</a></li>
+            <li><a href="#" data-page="categories" class="nav-link"><i class="fas fa-tags"></i> Categories</a></li>
+            <li><a href="#" data-page="about" class="nav-link"><i class="fas fa-info-circle"></i> About</a></li>
+            <li><a href="#" data-page="contact" class="nav-link"><i class="fas fa-phone-alt"></i> Contact</a></li>
+            <li><a href="#" data-page="blog" class="nav-link"><i class="fas fa-blog"></i> Blog</a></li>
+        </ul>
+        <div class="search-area">
+            <input type="text" id="globalSearchInput" placeholder="🔍 Search medicine...">
+            <button id="globalSearchBtn"><i class="fas fa-search"></i> Find</button>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+    <!-- ===================== HOME PAGE ================= -->
+    <div id="home-page" class="page active-page">
+        <div class="hero">
+            <h1>Welcome to CarePlus Pharmacy 🌿</h1>
+            <p>Your trusted partner for health & wellness — authentic medicines delivered with care.</p>
+            <a href="#" class="btn" data-page-nav="medicines">Explore Medicines <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <div class="section-title">✨ Why Choose Us?</div>
+        <div style="display: flex; flex-wrap: wrap; gap: 25px; justify-content: space-between;">
+            <div class="card" style="flex:1; min-width:200px;"><i class="fas fa-truck"></i><h3>Fast Delivery</h3><p>Free shipping on orders above Rs. 999. Same-day delivery in cities.</p></div>
+            <div class="card" style="flex:1; min-width:200px;"><i class="fas fa-shield-alt"></i><h3>100% Authentic</h3><p>Only certified, FDA-approved medicines.</p></div>
+            <div class="card" style="flex:1; min-width:200px;"><i class="fas fa-clock"></i><h3>24/7 Support</h3><p>Pharmacists available online to guide you.</p></div>
+        </div>
+
+        <div class="section-title">📢 Our Services</div>
+        <div class="med-grid">
+            <div class="card"><i class="fas fa-prescription-bottle"></i><h3>Prescription Meds</h3><p>Upload prescription & get medicines at doorstep.</p></div>
+            <div class="card"><i class="fas fa-heartbeat"></i><h3>Health Checkups</h3><p>Free BP & sugar monitoring at store.</p></div>
+            <div class="card"><i class="fas fa-video"></i><h3>E-Consultation</h3><p>Talk to experienced doctors online.</p></div>
+            <div class="card"><i class="fas fa-chart-line"></i><h3>Wellness Plans</h3><p>Personalized diet & supplement plans.</p></div>
+        </div>
+        <div class="contact-info" style="text-align:center; margin-top:20px;">
+            <i class="fas fa-star-of-life"></i> <strong>Need help?</strong> Call us: <a href="tel:+921234567890" style="color:#1c6e6f;">+92 123 4567890</a> or visit our store.
+        </div>
+    </div>
+
+    <!-- ===================== MEDICINES PAGE ================= -->
+    <div id="medicines-page" class="page">
+        <h1 style="font-size:2rem;">💊 Our Medicines</h1>
+        <p>Explore a wide range of high-quality pharmaceuticals. Click on any medicine to see details.</p>
+        <div id="medicines-list-container" class="med-grid"></div>
+        <!-- Modal for medicine details -->
+        <div id="medicineModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); justify-content:center; align-items:center; z-index:1000;">
+            <div style="background:white; max-width:450px; width:90%; border-radius:32px; padding:2rem; position:relative;">
+                <span id="closeModal" style="position:absolute; top:15px; right:20px; font-size:28px; cursor:pointer;">&times;</span>
+                <h3 id="modalTitle"></h3>
+                <p id="modalDesc"></p>
+                <p id="modalPrice" style="font-weight:bold;color:#1c6e6f;"></p>
+                <button class="btn" id="modalCloseBtn" style="margin-top:15px;">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================== CATEGORIES PAGE ================= -->
+    <div id="categories-page" class="page">
+        <h1 style="font-size:2rem;">📚 Medicine Categories</h1>
+        <p>Browse by therapeutic class and health needs.</p>
+        <div id="category-grid" class="category-grid"></div>
+        <div class="section-title">🌿 Popular Categories</div>
+        <div id="category-meds-preview" style="display:flex; flex-wrap:wrap; gap:15px; margin-top:10px;"></div>
+    </div>
+
+    <!-- ===================== ABOUT PAGE ================= -->
+    <div id="about-page" class="page">
+        <div class="hero" style="background:#e2f0ef;">
+            <h1>📖 About CarePlus Pharmacy</h1>
+            <p>Compassion, Trust, and Innovation since 2010</p>
+        </div>
+        <div style="display:flex; flex-wrap:wrap; gap:30px;">
+            <div style="flex:2; min-width:240px;">
+                <p style="font-size:1.2rem;">CarePlus Pharmacy is a family-owned establishment dedicated to providing accessible healthcare solutions. We blend modern pharmaceutical services with personalized care.</p>
+                <p>✅ Over 50,000+ happy customers<br>✅ Licensed pharmacists always on duty<br>✅ Free health advice & medication review<br>✅ Safe disposal of expired medicines</p>
+                <p>Our mission: <strong>"Your health, our priority"</strong> — ensuring every individual receives accurate medication and compassionate guidance.</p>
+            </div>
+            <div style="flex:1; background:#fef9e6; border-radius:28px; padding:1.5rem;">
+                <i class="fas fa-award fa-3x" style="color:#ffb347;"></i>
+                <h3>Accredited Partner</h3>
+                <p>Recognized by Pakistan Pharmacists Association & certified ISO 9001:2022.</p>
+            </div>
+        </div>
+        <div class="contact-info" style="margin-top:2rem;">
+            <i class="fas fa-map-marker-alt"></i> <strong>Head Office:</strong> 12-G, Liberty Market, Lahore, Pakistan
+        </div>
+    </div>
+
+    <!-- ===================== CONTACT PAGE ================= -->
+    <div id="contact-page" class="page">
+        <h1><i class="fas fa-headset"></i> Contact Us</h1>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:30px;">
+            <div class="card"><i class="fas fa-phone-alt fa-2x"></i><h3>Call Us</h3><p>+92 300 1234567<br>+92 42 111 227 372</p></div>
+            <div class="card"><i class="fas fa-envelope fa-2x"></i><h3>Email</h3><p>support@carepluspharmacy.pk<br>prescriptions@careplus.pk</p></div>
+            <div class="card"><i class="fas fa-clock fa-2x"></i><h3>Store Hours</h3><p>Mon-Sat: 9am – 10pm<br>Sunday: 11am – 6pm</p></div>
+            <div class="card"><i class="fab fa-whatsapp fa-2x"></i><h3>WhatsApp</h3><p>Chat with pharmacist: +92 321 9876543</p></div>
+        </div>
+        <div class="contact-info" style="margin-top:20px;">
+            <h3>📍 Visit Our Main Branch</h3>
+            <p>Shop #4, Main Boulevard, Gulberg III, Lahore. (Near City Hospital)</p>
+            <iframe width="100%" height="200" style="border:0; border-radius:20px; margin-top:15px;" loading="lazy" src="https://maps.google.com/maps?q=Lahore%20Gulberg&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
+        </div>
+    </div>
+
+    <!-- ===================== BLOG PAGE ================= -->
+    <div id="blog-page" class="page">
+        <h1><i class="fas fa-newspaper"></i> Health & Wellness Blog</h1>
+        <p>Stay informed with expert articles, tips, and updates.</p>
+        <div id="blog-grid" class="blog-grid"></div>
+    </div>
+</div>
+
+<footer>
+    <p>© 2025 CarePlus Pharmacy — Your health, our commitment. | <i class="fas fa-syringe"></i> Trusted care since 2010</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
